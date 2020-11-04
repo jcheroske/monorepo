@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "importsNotUsedAsValues": "error",
+    "isolatedModules": true,
+    "module": "CommonJS",
+    "noEmit": true,
+    "strict": true
+  },
+  "include": [
+    "**/*.*"
+  ],
+  "exclude": [
+    "**/.git/",
+    "**/dist/",
+    "**/node_modules/",
+    "**/yarn.lock",
+    "**/yarn-error.log"
+  ]
+}
