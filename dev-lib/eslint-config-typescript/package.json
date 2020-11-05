@@ -1,0 +1,17 @@
+{
+  "name": "@jcheroske/eslint-config-typescript",
+  "version": "1.0.0",
+  "license": "ISC",
+  "exports": {
+    ".": "./index.js",
+    "./base": "./base.js",
+    "./prettier": "./prettier.js"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "@jcheroske/eslint-config-javascript": "*",
+    "@typescript-eslint/eslint-plugin": "^4.6.1",
+    "@typescript-eslint/parser": "^4.6.1",
+    "eslint-config-xo-typescript": "^0.35.0"
+  }
+}

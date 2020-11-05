@@ -1,0 +1,37 @@
+{
+  "name": "@jcheroske/eslint-config-javascript",
+  "version": "1.0.0",
+  "license": "ISC",
+  "exports": {
+    ".": "./index.js",
+    "./base": "./base.js",
+    "./prettier": "./prettier.js"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "@cypress/eslint-plugin-json": "^3.2.3",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-config-xo": "^0.33.1",
+    "eslint-plugin-array-func": "^3.1.7",
+    "eslint-plugin-compat": "^3.8.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.1.0",
+    "eslint-plugin-lodash-fp": "^2.2.0-a1",
+    "eslint-plugin-no-constructor-bind": "^2.0.4",
+    "eslint-plugin-no-secrets": "^0.6.8",
+    "eslint-plugin-no-use-extend-native": "^0.5.0",
+    "eslint-plugin-optimize-regex": "^1.2.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-ramda": "^2.5.1",
+    "eslint-plugin-simple-import-sort": "^5.0.3",
+    "eslint-plugin-sonarjs": "^0.5.0",
+    "eslint-plugin-switch-case": "^1.1.2",
+    "eslint-plugin-unicorn": "^23.0.0"
+  },
+  "peerDependencies": {
+    "eslint": ">=7.10.0",
+    "prettier": ">=2.1.2"
+  }
+}

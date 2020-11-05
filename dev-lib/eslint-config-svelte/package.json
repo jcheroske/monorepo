@@ -1,0 +1,18 @@
+{
+  "name": "@jcheroske/eslint-config-svelte",
+  "version": "1.0.0",
+  "license": "ISC",
+  "exports": {
+    ".": "./index.js",
+    "./base": "./base.js",
+    "./typescript": "./typescript.js"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "@jcheroske/eslint-config-javascript": "*",
+    "@jcheroske/eslint-config-typescript": "*",
+    "@jcheroske/svelte-config": "*",
+    "eslint-plugin-svelte3": "^2.7.3",
+    "eslint-svelte3-preprocess": "^0.0.4"
+  }
+}

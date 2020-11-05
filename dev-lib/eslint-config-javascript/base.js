@@ -27,6 +27,12 @@ module.exports = {
     'plugin:unicorn/recommended',
     'xo/esnext',
   ],
+  ignorePatterns: [
+    '**/.git/',
+    '**/node_modules/',
+    '**/yarn.lock',
+    '**/yarn-error.log',
+  ],
   overrides: [
     {
       plugins: ['no-secrets'],
@@ -55,6 +61,7 @@ module.exports = {
     'switch-case',
     'unicorn',
   ],
+  root: true,
   rules: {
     'import/order': 'off',
     'sort-imports': 'off',

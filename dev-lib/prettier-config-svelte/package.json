@@ -1,0 +1,10 @@
+{
+  "name": "@jcheroske/prettier-config-svelte",
+  "version": "1.0.0",
+  "license": "ISC",
+  "main": "index.js",
+  "dependencies": {
+    "@jcheroske/prettier-config": "*",
+    "prettier-plugin-svelte": "*"
+  }
+}

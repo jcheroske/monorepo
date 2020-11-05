@@ -1,0 +1,16 @@
+{
+  "name": "@jcheroske/eslint-config-node",
+  "version": "1.0.0",
+  "license": "ISC",
+  "exports": {
+    ".": "./index.js",
+    "./base": "./base.js",
+    "./typescript": "./typescript.js"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "@jcheroske/eslint-config-javascript": "*",
+    "@jcheroske/eslint-config-typescript": "*",
+    "eslint-plugin-node": "^11.1.0"
+  }
+}
