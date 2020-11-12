@@ -1,9 +1,0 @@
-{
-  "name": "@jcheroske/svelte-config",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "ISC",
-  "dependencies": {
-    "svelte-preprocess": "^4.5.2"
-  }
-}

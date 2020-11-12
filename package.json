@@ -1,43 +1,98 @@
 {
   "name": "lerna-monorepo",
   "private": true,
+  "scripts": {
+    "bs": "lerna bootstrap",
+    "clean": "run-s clean:packages clean:root bs",
+    "clean:packages": "lerna clean -y",
+    "clean:root": "rimraf node_modules",
+    "postinstall": "patch-package",
+    "ncu": "run-s ncu:* bs",
+    "ncu:packages": "lerna exec --stream 'ncu -u'",
+    "ncu:root": "ncu -u"
+  },
   "workspaces": [
     "apps/*",
     "dev-lib/*",
     "lib/*"
   ],
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^3.0.0",
+    "@jcheroske/eslint-config-html": "*",
     "@jcheroske/eslint-config-javascript": "*",
-    "@jcheroske/prettier-config": "*",
-    "@rollup/plugin-commonjs": "^16.0.0",
-    "@rollup/plugin-node-resolve": "^10.0.0",
-    "@rollup/plugin-typescript": "^6.1.0",
-    "@tsconfig/svelte": "^1.0.10",
-    "eslint": "^7.12.1",
-    "jest": "^26.6.2",
+    "@jcheroske/eslint-config-json": "*",
+    "@jcheroske/eslint-config-svelte": "*",
+    "@jcheroske/eslint-config-typescript": "*",
+    "@jcheroske/prettier-config-svelte": "*",
+    "@octokit/core": "^3.2.1",
+    "@types/html-minifier": "^4.0.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.13.0",
+    "jest": "^26.6.3",
     "lerna": "^3.22.1",
-    "postcss": "^8.1.4",
-    "postcss-load-config": "^3.0.0",
+    "npm-run-all": "^4.1.5",
+    "patch-package": "^6.2.2",
+    "postinstall-postinstall": "^2.1.0",
     "prettier": "^2.1.2",
+    "prettier-plugin-svelte": "^1.4.1",
     "rollup": "^2.33.1",
-    "rollup-plugin-livereload": "^2.0.0",
-    "rollup-plugin-svelte": "^6.1.0",
-    "rollup-plugin-terser": "^7.0.2",
-    "sirv-cli": "^1.0.8",
-    "svelte": "^3.29.4",
-    "svelte-check": "^1.1.7",
+    "svelte": "^3.29.7",
+    "svelte-check": "^1.1.11",
     "svelte-preprocess": "^4.5.2",
-    "tailwindcss": "^1.9.6",
-    "ts-jest": "^26.4.3",
+    "tailwind": "^4.0.0",
+    "ts-jest": "^26.4.4",
     "ts-node": "^9.0.0",
     "tslib": "^2.0.3",
     "typescript": "^4.0.5"
   },
+  "resolutions": {
+    "core-js": ">=3.7.0",
+    "eslint": ">=7.13.0",
+    "postcss": ">=8.1.6"
+  },
   "eslintConfig": {
-    "extends": [
-      "@jcheroske/eslint-config-javascript"
+    "overrides": [
+      {
+        "files": [
+          "**/*.html"
+        ],
+        "extends": [
+          "@jcheroske/eslint-config-html"
+        ]
+      },
+      {
+        "files": [
+          "**/*.js"
+        ],
+        "extends": [
+          "@jcheroske/eslint-config-javascript"
+        ]
+      },
+      {
+        "files": [
+          "**/*.json"
+        ],
+        "extends": [
+          "@jcheroske/eslint-config-json"
+        ]
+      },
+      {
+        "files": [
+          "**/*.ts"
+        ],
+        "extends": [
+          "@jcheroske/eslint-config-typescript"
+        ]
+      }
+    ],
+    "ignorePatterns": [
+      "!.eslintrc.js",
+      "**/.git/",
+      "**/dist/",
+      "**/lerna-debug.log",
+      "**/node_modules/",
+      "**/yarn.lock",
+      "**/yarn-error.log"
     ]
   },
-  "prettier": "@jcheroske/prettier-config"
+  "prettier": "@jcheroske/prettier-config-svelte"
 }

@@ -1,0 +1,15 @@
+{
+  "name": "@jcheroske/svelte-preprocess",
+  "version": "1.0.0",
+  "license": "ISC",
+  "exports": {
+    "./config": "./config.js"
+  },
+  "dependencies": {
+    "@jcheroske/dev-or-prod": "*",
+    "@jcheroske/postcss-svelte": "*"
+  },
+  "peerDependencies": {
+    "svelte-preprocess": "*"
+  }
+}

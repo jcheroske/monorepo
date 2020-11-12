@@ -1,0 +1,9 @@
+{
+  "name": "@jcheroske/eslint-config-json",
+  "version": "1.0.0",
+  "license": "ISC",
+  "main": "index.js",
+  "dependencies": {
+    "@cypress/eslint-plugin-json": "^3.2.3"
+  }
+}

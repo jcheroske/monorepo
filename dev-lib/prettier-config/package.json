@@ -2,5 +2,8 @@
   "name": "@jcheroske/prettier-config",
   "version": "1.0.0",
   "license": "ISC",
-  "main": "index.json"
+  "main": "index.json",
+  "peerDependencies": {
+    "prettier": "*"
+  }
 }

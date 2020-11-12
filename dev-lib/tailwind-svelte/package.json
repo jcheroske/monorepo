@@ -1,0 +1,13 @@
+{
+  "name": "@jcheroske/tailwind-svelte",
+  "version": "1.0.0",
+  "license": "ISC",
+  "exports": {
+    "./config": "./config.js",
+    "./Component.svelte": "./Component.svelte",
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "tailwind": "*"
+  }
+}

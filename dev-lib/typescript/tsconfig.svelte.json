@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Svelte",
+  "extends": "@jcheroske/typescript/tsconfig.base",
+  "compilerOptions": {
+    "importsNotUsedAsValues": "error",
+    "isolatedModules": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "target": "ESNext",
+    "types": [
+      "node",
+      "svelte"
+    ]
+  }
+}

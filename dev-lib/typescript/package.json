@@ -1,0 +1,14 @@
+{
+  "name": "@jcheroske/typescript",
+  "version": "1.0.0",
+  "license": "ISC",
+  "exports": {
+    "./tsconfig.base": "./tsconfig.base.json",
+    "./tsconfig.svelte": "./tsconfig.svelte.json"
+  },
+  "peerDependencies": {
+    "ts-node": "^9.0.0",
+    "tslib": "^2.0.3",
+    "typescript": "^4.0.5"
+  }
+}

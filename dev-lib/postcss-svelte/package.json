@@ -1,0 +1,17 @@
+{
+  "name": "@jcheroske/postcss-svelte",
+  "version": "1.0.0",
+  "license": "ISC",
+  "exports": {
+    "./config": "./config.js"
+  },
+  "dependencies": {
+    "@fullhuman/postcss-purgecss": "^3.0.0",
+    "@jcheroske/dev-or-prod": "*",
+    "autoprefixer": "^10.0.2",
+    "tailwindcss": "^1.9.6"
+  },
+  "peerDependencies": {
+    "postcss": "*"
+  }
+}

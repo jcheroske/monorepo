@@ -1,0 +1,6 @@
+{
+  "name": "@jcheroske/dev-or-prod",
+  "version": "1.0.0",
+  "license": "ISC",
+  "main": "index.js"
+}

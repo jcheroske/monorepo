@@ -27,32 +27,16 @@ module.exports = {
     'plugin:unicorn/recommended',
     'xo/esnext',
   ],
-  ignorePatterns: [
-    '**/.git/',
-    '**/node_modules/',
-    '**/yarn.lock',
-    '**/yarn-error.log',
-  ],
-  overrides: [
-    {
-      plugins: ['no-secrets'],
-      rules: {
-        'no-secrets/no-secrets': 'error',
-      },
-      files: ['*', '**/*'],
-      excludedFiles: ['*.json', '**/*.json'],
-    },
-  ],
   plugins: [
-    '@cypress/json',
     'array-func',
     'compat',
     'eslint-comments',
     'import',
     'jest',
     'lodash-fp',
-    'no-use-extend-native',
     'no-constructor-bind',
+    'no-secrets',
+    'no-use-extend-native',
     'optimize-regex',
     'promise',
     'ramda',
@@ -69,10 +53,14 @@ module.exports = {
 
     'array-func/prefer-array-from': 'off',
 
+    'capitalized-comments': 'off',
+
     'import/no-anonymous-default-export': 'off',
 
     'no-constructor-bind/no-constructor-bind': 'error',
     'no-constructor-bind/no-constructor-state': 'error',
+
+    'no-secrets/no-secrets': 'error',
 
     'no-use-extend-native/no-use-extend-native': 'error',
 
@@ -96,37 +84,6 @@ module.exports = {
       },
     ],
     'unicorn/no-reduce': 'off',
-  },
-  settings: {
-    'json/json-with-comments-files': [],
-    'json/package-json-sort-order': [
-      'name',
-      'version',
-      'private',
-      'description',
-      'license',
-      'keywords',
-      'author',
-      'repository',
-      'homepage',
-      'bugs',
-      'engines',
-      'scripts',
-      'bin',
-      'type',
-      'exports',
-      'main',
-      'types',
-      'typesVersions',
-      'files',
-      'browser',
-      'workspaces',
-      'dependencies',
-      'devDependencies',
-      'peerDependencies',
-      'resolutions',
-      'eslintConfig',
-      'prettier',
-    ],
+    'unicorn/prevent-abbreviations': 'off',
   },
 }

@@ -10,6 +10,19 @@ module.exports = {
     'plugin:import/typescript',
     'xo-typescript',
   ],
+  overrides: [
+    {
+      plugins: ['@typescript-eslint'],
+      rules: {
+        '@typescript-eslint/no-unsafe-assignment': 'off',
+        '@typescript-eslint/no-unsafe-call': 'off',
+        '@typescript-eslint/no-unsafe-member-access': 'off',
+        '@typescript-eslint/no-unsafe-return': 'off',
+        '@typescript-eslint/no-var-requires': 'off',
+      },
+      files: ['**/*.js'],
+    },
+  ],
   plugins: ['@typescript-eslint'],
   rules: {
     // Fixing annoying and buggy no-unused-vars rules

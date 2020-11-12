@@ -1,0 +1,9 @@
+{
+  "name": "@jcheroske/eslint-config-html",
+  "version": "1.0.0",
+  "license": "ISC",
+  "main": "index.js",
+  "dependencies": {
+    "eslint-plugin-html": "^6.1.1"
+  }
+}
