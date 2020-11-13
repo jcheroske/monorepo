@@ -1,0 +1,21 @@
+{
+  "name": "svelte-template",
+  "version": "1.0.0",
+  "license": "ISC",
+  "scripts": {
+    "build": "run-s clean check compile",
+    "check": "svelte-check",
+    "clean": "rimraf dist",
+    "compile": "cross-env NODE_ENV=production rollup --config",
+    "start": "npm-run-all clean --parallel watch:*",
+    "watch:build": "cross-env NODE_ENV=development rollup --config --watch",
+    "watch:check": "svelte-check --watch"
+  },
+  "devDependencies": {
+    "@jcheroske/rollup-svelte": "*",
+    "@jcheroske/svelte": "*",
+    "@jcheroske/tailwind-svelte": "*",
+    "@jcheroske/typescript": "*"
+  },
+  "browserslist": "last 2 versions"
+}
