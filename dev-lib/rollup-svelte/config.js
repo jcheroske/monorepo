@@ -24,11 +24,11 @@ const plugins = [
     extensions: ['.svelte'],
     preprocess: sveltePreprocess(sveltePreprocessConfig),
   }),
-  typescript({ sourceMap: isDev }),
   resolve({
     browser: true,
     dedupe: ['svelte'],
   }),
+  typescript({ sourceMap: isDev }),
   commonjs(),
   // Injects your bundles into index page
   html({
