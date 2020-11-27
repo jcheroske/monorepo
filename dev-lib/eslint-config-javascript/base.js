@@ -49,7 +49,9 @@ module.exports = {
   rules: {
     'import/order': 'off',
     'sort-imports': 'off',
-    'simple-import-sort/sort': 'error',
+    'simple-import-sort/imports': 'error',
+
+    'new-cap': 'off',
 
     'array-func/prefer-array-from': 'off',
 
@@ -73,6 +75,8 @@ module.exports = {
       { fallthrough: 'never' },
     ],
 
+    'unicorn/consistent-function-scoping': 'off',
+
     'unicorn/filename-case': [
       'error',
       {
@@ -84,6 +88,7 @@ module.exports = {
       },
     ],
     'unicorn/no-reduce': 'off',
+    'unicorn/prefer-spread': 'off',
     'unicorn/prevent-abbreviations': 'off',
   },
 }

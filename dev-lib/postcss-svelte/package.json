@@ -9,7 +9,7 @@
     "@fullhuman/postcss-purgecss": "^3.0.0",
     "@jcheroske/dev-or-prod": "*",
     "autoprefixer": "^10.0.2",
-    "tailwindcss": "^1.9.6"
+    "tailwindcss": "^2.0.1"
   },
   "peerDependencies": {
     "postcss": "*"

@@ -11,6 +11,10 @@
     "watch:build": "cross-env NODE_ENV=development rollup --config --watch",
     "watch:check": "svelte-check --watch"
   },
+  "dependencies": {
+    "immutable": "^4.0.0-rc.12",
+    "rxjs": "^6.6.3"
+  },
   "devDependencies": {
     "@jcheroske/rollup-svelte": "*",
     "@jcheroske/svelte": "*",

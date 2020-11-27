@@ -1,0 +1,37 @@
+import { List } from 'immutable'
+import { derived } from 'svelte/store'
+
+import type { Grid } from '~/types'
+
+import { configuration } from './configuration'
+import { food } from './food'
+import { runtime } from './runtime'
+import { snake } from './snake'
+
+const initialGrid = derived<typeof configuration, Grid>(
+  configuration,
+  ({ gridSize: { X, Y } }) =>
+    List(new Array(Y).fill(List(new Array(X).fill('EMPTY')))) as Grid,
+)
+
+const grid = derived(
+  [food, initialGrid, runtime, snake],
+  ([$food, $initialGrid, $runtime, $snake]): Grid => {
+    let nextGrid = $initialGrid
+
+    if ($runtime.status !== 'RESET') {
+      nextGrid = nextGrid.setIn([$food.Y, $food.X], 'FOOD')
+
+      $snake.forEach(({ X, Y }, i) => {
+        const searchKeyPath = [Y, X]
+        if (nextGrid.hasIn(searchKeyPath)) {
+          nextGrid = nextGrid.setIn(searchKeyPath, i === 0 ? 'HEAD' : 'BODY')
+        }
+      })
+    }
+
+    return nextGrid
+  },
+)
+
+export { grid }

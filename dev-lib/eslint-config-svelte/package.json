@@ -7,7 +7,7 @@
     "@jcheroske/svelte-preprocess": "*",
     "eslint-plugin-svelte3": "^2.7.3",
     "eslint-svelte3-preprocess": "^0.0.4",
-    "svelte-preprocess": "^4.5.2"
+    "svelte-preprocess": "^4.6.1"
   },
   "peerDependencies": {
     "svelte": "*"

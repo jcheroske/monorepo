@@ -1,19 +1,20 @@
 <script>
-  import { CellContents } from './types/CellContents.enum'
+  import { configuration } from '~/models/configuration'
+  import type { CellType } from '~/types'
 
-  export let size: number = 5
-  export let contents: CellContents = CellContents.EMPTY
+  export let size: number = $configuration.cellSize
+  export let type: CellType
 
-  const contentsToColorMap = new Map<CellContents, String>()
-  contentsToColorMap.set(CellContents.EMPTY, 'black')
-  contentsToColorMap.set(CellContents.BODY, 'green-600')
-  contentsToColorMap.set(CellContents.HEAD, 'red-600')
-  contentsToColorMap.set(CellContents.FOOD, 'yellow-300')
+  const typeToColorMap = new Map<CellType, String>()
+  typeToColorMap.set('EMPTY', 'black')
+  typeToColorMap.set('BODY', 'green-600')
+  typeToColorMap.set('HEAD', 'red-600')
+  typeToColorMap.set('FOOD', 'yellow-300')
 </script>
 
 <style>
 </style>
 
 <template>
-  <div class="h-{size} w-{size} bg-{contentsToColorMap.get(contents)}"></div>
+  <div class="h-{size} w-{size} bg-{typeToColorMap.get(type)}"></div>
 </template>

@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@jcheroske/svelte-preprocess": "*",
-    "svelte-preprocess": "^4.5.2"
+    "svelte-preprocess": "^4.6.1"
   },
   "peerDependencies": {
     "svelte": "*",

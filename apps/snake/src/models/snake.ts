@@ -1,0 +1,37 @@
+import { List } from 'immutable'
+import { derived, get, writable } from 'svelte/store'
+
+import type { Snake } from '~/types'
+
+import { configuration } from './configuration'
+import { direction } from './direction'
+import { LocationFactory } from './util'
+
+const initialSnake = derived<typeof configuration, Snake>(
+  configuration,
+  ({ gridSize }) =>
+    List([
+      LocationFactory({
+        X: Math.floor((gridSize.X - 1) / 2),
+        Y: gridSize.Y - 1,
+      }),
+    ]),
+)
+
+const snake = writable(get(initialSnake))
+
+function resetSnake(): void {
+  snake.set(get(initialSnake))
+}
+
+function attachNewHead(): void {
+  const $snake = get(snake)
+  const newHead = get(direction).getNextLocation($snake.first())
+  snake.set($snake.unshift(newHead))
+}
+
+function removeTail(): void {
+  snake.set(get(snake).pop())
+}
+
+export { snake, resetSnake, attachNewHead, removeTail }

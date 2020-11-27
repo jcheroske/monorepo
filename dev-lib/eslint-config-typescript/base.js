@@ -27,7 +27,10 @@ module.exports = {
   rules: {
     // Fixing annoying and buggy no-unused-vars rules
     'no-unused-vars': 'off',
+    '@typescript-eslint/no-unsafe-member-access': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars-experimental': 'error',
+
+    'import/no-unresolved': 'off',
   },
 }
