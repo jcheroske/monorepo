@@ -3,17 +3,22 @@
   "version": "1.0.0",
   "license": "ISC",
   "scripts": {
-    "build": "run-s clean check compile",
+    "build:dev": "run-s clean check compile:dev",
+    "build:prod": "run-s clean check compile:prod",
     "check": "svelte-check",
     "clean": "rimraf dist",
-    "compile": "cross-env NODE_ENV=production rollup --config",
+    "compile:dev": "cross-env NODE_ENV=development rollup --config",
+    "compile:prod": "cross-env NODE_ENV=production rollup --config",
     "watch": "npm-run-all clean --parallel watch:*",
     "watch:build": "cross-env NODE_ENV=development rollup --config --watch",
     "watch:check": "svelte-check --watch"
   },
   "dependencies": {
-    "immutable": "^4.0.0-rc.12",
-    "rxjs": "^6.6.3"
+    "@jcheroske/xstate-svelte": "*",
+    "@xstate/immer": "^0.1.0",
+    "immer": "^8.0.0",
+    "rxjs": "^7.0.0-beta.8",
+    "xstate": "^4.14.1"
   },
   "devDependencies": {
     "@jcheroske/rollup-svelte": "*",

@@ -1,6 +1,4 @@
-import { List, Map, RecordOf } from 'immutable'
-
-export type ConfigurationData = {
+export type Configuration = {
   cellSize: number
   gridSize: {
     X: number
@@ -17,16 +15,14 @@ export type ConfigurationData = {
     right: string
   }
 }
-export type Configuration = RecordOf<ConfigurationData>
 
-export type LocationData = { X: number; Y: number }
-export type Location = RecordOf<LocationData>
+export type Location = { X: number; Y: number }
 
-export type Snake = List<Location>
+export type Snake = Location[]
 
 export type CellType = 'EMPTY' | 'HEAD' | 'BODY' | 'FOOD' | 'COLLISION'
 
-export type Grid = List<List<CellType>>
+export type Grid = CellType[][]
 
 export type DirectionName = 'UP' | 'DOWN' | 'LEFT' | 'RIGHT'
 

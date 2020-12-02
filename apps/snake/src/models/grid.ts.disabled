@@ -4,9 +4,9 @@ import { derived } from 'svelte/store'
 import type { Grid } from '~/types'
 
 import { configuration } from './configuration'
-import { food } from './food'
-import { runtime } from './runtime'
-import { snake } from './snake'
+import { food } from './food.ts.disabled'
+import { runtime } from './runtime.ts.disabled'
+import { snake } from './snake.ts.disabled'
 
 const initialGrid = derived<typeof configuration, Grid>(
   configuration,

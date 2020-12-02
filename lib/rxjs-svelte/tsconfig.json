@@ -2,7 +2,9 @@
   "extends": "@jcheroske/typescript/tsconfig.svelte",
   "compilerOptions": {
     "baseUrl": "src",
-    "noEmit": true,
+    "declaration": true,
+    "noEmit": false,
+    "outDir": "./dist",
     "paths": {
       "~/*": [
         "*"

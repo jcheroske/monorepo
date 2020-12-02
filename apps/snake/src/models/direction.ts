@@ -1,66 +1,65 @@
-import { Map } from 'immutable'
-import { derived, get } from 'svelte/store'
+import { produce } from 'immer'
+import { combineLatest, concat, fromEvent } from 'rxjs'
+import {
+  filter,
+  map,
+  mergeMap,
+  take,
+  tap,
+  withLatestFrom,
+} from 'rxjs/operators'
 
-import type { Direction, Location } from '~/types'
+import type { Configuration, Direction } from '~/types'
 
-import { configuration } from './configuration'
-import { runtime } from './runtime'
+import { configuration$ } from './configuration'
 
-const keyToDirection = derived<typeof configuration, Map<string, Direction>>(
-  configuration,
-  ({ keyMappings }) => {
-    return Map({
-      [keyMappings.up]: {
-        name: 'UP',
-        key: keyMappings.up,
-        getNextLocation: (location: Location) =>
-          location.set('Y', location.get('Y', 0) - 1),
-      },
-      [keyMappings.down]: {
-        name: 'DOWN',
-        key: keyMappings.up,
-        getNextLocation: (location: Location) =>
-          location.set('Y', location.get('Y', 0) + 1),
-      },
-      [keyMappings.left]: {
-        name: 'LEFT',
-        key: keyMappings.up,
-        getNextLocation: (location: Location) =>
-          location.set('X', location.get('X', 0) - 1),
-      },
-      [keyMappings.right]: {
-        name: 'RIGHT',
-        key: keyMappings.up,
-        getNextLocation: (location: Location) =>
-          location.set('X', location.get('X', 0) + 1),
-      },
-    })
-  },
+const keyToDirection$ = configuration$.pipe(
+  map<Configuration, Record<string, Direction>>(({ keyMappings }) => ({
+    [keyMappings.up]: {
+      name: 'UP',
+      key: keyMappings.up,
+      getNextLocation: produce((draft) => {
+        draft.Y -= 1
+      }),
+    },
+    [keyMappings.down]: {
+      name: 'DOWN',
+      key: keyMappings.up,
+      getNextLocation: produce((draft) => {
+        draft.Y += 1
+      }),
+    },
+    [keyMappings.left]: {
+      name: 'LEFT',
+      key: keyMappings.up,
+      getNextLocation: produce((draft) => {
+        draft.X -= 1
+      }),
+    },
+    [keyMappings.right]: {
+      name: 'RIGHT',
+      key: keyMappings.up,
+      getNextLocation: produce((draft) => {
+        draft.X += 1
+      }),
+    },
+  })),
 )
 
-const initialDirection = derived(
-  [configuration, keyToDirection],
-  ([$configuration, $keyToDirection]) =>
-    $keyToDirection.get($configuration.keyMappings.up) as Direction,
+const initialDirection$ = combineLatest([configuration$, keyToDirection$]).pipe(
+  mergeMap(
+    ([{ keyMappings }, keyToDirection]) => keyToDirection[keyMappings.up],
+  ),
 )
 
-const direction = derived(
-  [initialDirection, keyToDirection, runtime],
-  ([$initialDirection, $keyToDirection, $runtime], set) => {
-    const keydownHandler = (event: KeyboardEvent) => {
-      if ($keyToDirection.has(event.key)) {
-        set($keyToDirection.get(event.key) as Direction)
-      }
+const direction$ = fromEvent<KeyboardEvent>(document, 'keydown').pipe(
+  withLatestFrom(keyToDirection$),
+  map(([evt, keyToDirection]) => {
+    if (evt.key in keyToDirection) {
+      return keyToDirection[evt.key]
     }
-
-    if ($runtime.status === 'RUNNING') {
-      document.addEventListener('keydown', keydownHandler)
-      return () => document.removeEventListener('keydown', keydownHandler)
-    }
-
-    set($initialDirection)
-  },
-  get(initialDirection),
+  }),
+  filter((val) => val != undefined),
 )
 
-export { direction }
+export { direction$ }

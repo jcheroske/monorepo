@@ -1,0 +1,21 @@
+{
+  "name": "@jcheroske/xstate-svelte",
+  "version": "1.0.0",
+  "license": "ISC",
+  "scripts": {
+    "build": "tsc"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "dependencies": {
+    "@jcheroske/rxjs-svelte": "*",
+    "lodash": "^4.17.20",
+    "rxjs": "^7.0.0-beta.8",
+    "svelte": "^3.30.0",
+    "xstate": "^4.14.1"
+  },
+  "devDependencies": {
+    "@jcheroske/typescript": "*",
+    "@types/lodash": "^4.14.165"
+  }
+}

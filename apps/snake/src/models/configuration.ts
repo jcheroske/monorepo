@@ -1,11 +1,9 @@
-import { Record } from 'immutable'
-import { writable } from 'svelte/store'
+import { SvelteSubject } from '@jcheroske/rxjs-svelte'
+import { freeze } from 'immer'
 
-import type { Configuration, ConfigurationData } from '~/types'
+import type { Configuration } from '~/types'
 
-const ConfigurationFactory: (
-  data?: ConfigurationData,
-) => Configuration = Record({
+const DEFAULT_CONFIGURATION: Configuration = {
   cellSize: 7,
   gridSize: {
     X: 21,
@@ -21,8 +19,8 @@ const ConfigurationFactory: (
     left: 'ArrowLeft',
     right: 'ArrowRight',
   },
-})
+}
 
-const configuration = writable(ConfigurationFactory())
+const configuration$ = new SvelteSubject(freeze(DEFAULT_CONFIGURATION))
 
-export { configuration }
+export { configuration$ }

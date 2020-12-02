@@ -1,7 +1,9 @@
 const { isDev } = require('@jcheroske/dev-or-prod')
 const sveltePreprocessConfig = require('@jcheroske/svelte-preprocess/config')
 const commonjs = require('@rollup/plugin-commonjs')
+const css = require('rollup-plugin-css-only')
 const resolve = require('@rollup/plugin-node-resolve').default
+const replace = require('@rollup/plugin-replace')
 const typescript = require('@rollup/plugin-typescript')
 const html = require('rollup-plugin-html2')
 const livereload = require('rollup-plugin-livereload')
@@ -16,20 +18,21 @@ const port = 3000
 // Define all our plugins
 const plugins = [
   svelte({
-    dev: isDev,
-    // Extract all styles to an external file
-    css: (css) => {
-      css.write(`bundle.css`)
+    compilerOptions: {
+      dev: isDev,
     },
-    extensions: ['.svelte'],
     preprocess: sveltePreprocess(sveltePreprocessConfig),
   }),
+  css({ output: `bundle.css` }),
   resolve({
     browser: true,
     dedupe: ['svelte'],
   }),
-  typescript({ sourceMap: isDev }),
   commonjs(),
+  replace({
+    'process.env.NODE_ENV': `'${process.env.NODE_ENV}'`,
+  }),
+  typescript({ sourceMap: isDev }),
   // Injects your bundles into index page
   html({
     template: 'src/index.html',
@@ -60,4 +63,7 @@ module.exports = {
     format: 'iife',
   },
   plugins,
+  watch: {
+    clearScreen: false,
+  },
 }

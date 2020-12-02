@@ -51,6 +51,7 @@ module.exports = {
     'sort-imports': 'off',
     'simple-import-sort/imports': 'error',
 
+    'default-case': 'off',
     'new-cap': 'off',
 
     'array-func/prefer-array-from': 'off',

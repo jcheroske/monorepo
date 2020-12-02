@@ -4,8 +4,8 @@ import { derived, get, writable } from 'svelte/store'
 import type { Location } from '~/types'
 
 import { configuration } from './configuration'
-import { snake } from './snake'
-import { LocationFactory } from './util'
+import { snake } from './snake.ts.disabled'
+import { LocationFactory } from './util.ts.disabled'
 
 const food = writable<Location>(LocationFactory())
 

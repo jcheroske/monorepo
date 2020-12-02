@@ -1,9 +1,14 @@
+const { isProd } = require('@jcheroske/dev-or-prod')
+
 module.exports = {
   future: {
-    // RemoveDeprecatedGapUtilities: true,
-    // purgeLayersByDefault: true,
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
   },
-  purge: [],
+  purge: {
+    content: ['./src/**/*.html', './src/**/*.svelte'],
+    enabled: isProd,
+  },
   theme: {
     extend: {},
   },

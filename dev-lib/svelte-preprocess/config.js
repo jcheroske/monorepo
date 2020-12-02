@@ -1,8 +1,8 @@
-const { isDev } = require('@jcheroske/dev-or-prod')
+// const { isDev } = require('@jcheroske/dev-or-prod')
 const postcssConfig = require('@jcheroske/postcss-svelte/config')
 
 module.exports = {
-  sourceMap: isDev,
+  sourceMap: false, // isDev,
   defaults: {
     script: 'typescript',
   },

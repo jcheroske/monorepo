@@ -1,8 +1,8 @@
 import { derived, get } from 'svelte/store'
 
-import { configuration } from './configuration'
-import { runtime } from './runtime'
-import { snake } from './snake'
+import { configuration$ } from './configuration'
+import { runtime } from './runtime.ts.disabled'
+import { snake } from './snake.ts.disabled'
 
 const tickDuration = derived([configuration, snake], ([{ tick }, $snake]) => {
   return (

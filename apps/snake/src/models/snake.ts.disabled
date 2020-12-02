@@ -5,7 +5,7 @@ import type { Snake } from '~/types'
 
 import { configuration } from './configuration'
 import { direction } from './direction'
-import { LocationFactory } from './util'
+import { LocationFactory } from './util.ts.disabled'
 
 const initialSnake = derived<typeof configuration, Snake>(
   configuration,

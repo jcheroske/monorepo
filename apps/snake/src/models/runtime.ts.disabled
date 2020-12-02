@@ -1,28 +1,29 @@
+import { freeze, produce } from 'immer'
 import { writable } from 'svelte/store'
 
 import type { RuntimeStatus } from '~/types'
 
-function getInitialState() {
-  return {
-    foodCount: 0,
-    status: 'RESET' as RuntimeStatus,
-  }
-}
+const INITIAL_STATE = freeze({
+  foodCount: 0,
+  status: 'RESET' as RuntimeStatus,
+})
 
-const runtime = writable(getInitialState())
+const runtime = writable(INITIAL_STATE)
 
 function reset(): void {
-  runtime.set(getInitialState())
+  runtime.set(INITIAL_STATE)
 }
 
 function start(): void {
-  runtime.update((state) => {
-    if (state.status === 'RESET' || state.status === 'PAUSED') {
-      return { ...state, status: 'RUNNING' }
-    }
-
-    return state
-  })
+  runtime.update(
+    produce((draft) => {
+      switch (draft.status) {
+        case 'RESET':
+        case 'PAUSED':
+          draft.status = 'RUNNING'
+      }
+    }),
+  )
 }
 
 function pause(): void {
